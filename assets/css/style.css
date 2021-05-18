@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 :root {
-    --primary-color: rgb(237, 239, 253);
-    --primary-color-darker: rgb(205, 210, 247);
+    --primary-color: rgb(255, 255, 255);
+    --primary-color-darker: rgb(36, 36, 36);
 }
+/* rgb(205, 210, 247) */
 
 * {
     box-sizing: border-box;
@@ -13,7 +14,7 @@
 body{
     margin: 0;
     padding: 0;
-    background: var(--primary-color);
+    background: var(--primary-color-darker);
     font-family: 'Open sans', sans-serif;
     font-size: 1.3em;
     line-height: 1.5em;
@@ -21,11 +22,22 @@ body{
 
 .container {
     max-width: 640px;
-    margin: 50px auto;
-    background: #fff;
+    margin: 50px auto !important;
+    background: var(--primary-color);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+}
+
+.main-heading {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 56px;
+    
+}
+
+.main-img {
+    width: 400px;
 }
 
 form input, form label, form button {
@@ -41,8 +53,11 @@ input {
     margin-right: 0;
 }
 
+
+
 input:focus {
     outline: 1px solid var(--primary-color);
+
 }
 
 .btn-tasks {
@@ -76,4 +91,23 @@ input:focus {
 
 ul {
     list-style: none;
+}
+
+#task {
+    width: 80%;
+}
+
+table.tasks {
+    table-layout: fixed;
+}
+
+table.tasks tr {
+    border-bottom: none;
+    width: 100%;
+    overflow: hidden;
+    
+}
+table.tasks td {
+    text-align: center;
+
 }

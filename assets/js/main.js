@@ -15,13 +15,13 @@ inputTask.addEventListener('keypress', function(e) {
     }   
 })
 
-function createsDelBtn(li) {
-    li.innerHTML += '  ';
+function createsDelBtn(tRow) {
     const delBtn = document.createElement('button');
-    delBtn.innerHTML = `<img src="./assets/img/delete.png" alt="red bin" class="img-bin">`
-    delBtn.classList.add('del-btn')
-    delBtn.setAttribute('title', 'Delete');
-    li.appendChild(delBtn);
+    const td = document.createElement('td');
+    delBtn.innerHTML = `<img src="./assets/img/delete.png" alt="red bin" class="img-bin">`;
+    delBtn.classList.add('del-btn');
+    tRow.appendChild(td);
+    td.appendChild(delBtn);
 }
 
 function clearsInput() {
@@ -29,22 +29,22 @@ function clearsInput() {
     inputTask.focus();
 }
 
-function createsLi() {
-    const li = document.createElement('li');
-    return li;
+function createsTableRow() {
+    const tr = document.createElement('tr');
+    return tr;
 }
 
 function createTask(inputText) {
-    const list = createsLi();
-    list.innerHTML += inputText;
-    tasks.appendChild(list);
+    const tRow = createsTableRow();
+    tRow.innerHTML += `<td>${inputText}</td>`;
+    tasks.appendChild(tRow);
     clearsInput();
-    createsDelBtn(list);
+    createsDelBtn(tRow);
     saveTasks();
 }
 
 function saveTasks() {
-    const liTasks = tasks.querySelectorAll('li');
+    const liTasks = tasks.querySelectorAll('td');
     const liTasksList = [];
 
     for (let task of liTasks) {
@@ -70,7 +70,7 @@ addSavedTasks();
 document.addEventListener('click', function(e) {
     const el = e.target;
     if (el.classList.contains('img-bin')) {
-        el.parentNode.parentNode.remove();
+        el.parentNode.parentNode.parentNode.remove();
         saveTasks();
     }
 })
